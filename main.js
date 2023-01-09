@@ -2,6 +2,8 @@ import './style.css';
 
 const form = document.querySelector('form');
 
+const textArea = document.querySelector('textarea[name="prompt"]');
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   showSpinner();
@@ -25,8 +27,9 @@ form.addEventListener('submit', async (e) => {
     result.innerHTML = `<img src="${image}" width="512" />`;
   } else {
     const err = await response.text();
-    alert(err);
     console.error(err);
+    textArea.value =
+      "You've entered text that is not allowed or inappropiate! Please try again.";
   }
 
   hideSpinner();
