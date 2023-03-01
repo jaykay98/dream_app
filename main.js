@@ -1,11 +1,16 @@
 import './style.css';
 
+const currentYear = new Date().getFullYear();
+const footer = document.querySelector('footer');
+footer.innerHTML = `&copy; Jason Kidd ${currentYear}`;
+
 const form = document.querySelector('form');
 
 const textArea = document.querySelector('textarea[name="prompt"]');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   showSpinner();
 
   const data = new FormData(form);
@@ -28,8 +33,7 @@ form.addEventListener('submit', async (e) => {
   } else {
     const err = await response.text();
     console.error(err);
-    textArea.value =
-      "You've entered text that is not allowed or inappropiate! Please try again.";
+    alert(err);
   }
 
   hideSpinner();
