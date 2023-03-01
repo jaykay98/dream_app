@@ -6,8 +6,6 @@ footer.innerHTML = `&copy; Jason Kidd ${currentYear}`;
 
 const form = document.querySelector('form');
 
-const textArea = document.querySelector('textarea[name="prompt"]');
-
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -15,7 +13,7 @@ form.addEventListener('submit', async (e) => {
 
   const data = new FormData(form);
 
-  const response = await fetch('http://localhost:8080/dream', {
+  const response = await fetch('https://dream-app-api.onrender.com/dream', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
